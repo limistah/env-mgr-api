@@ -1,20 +1,29 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as helmet from 'helmet';
+import { ValidationPipe } from '@nestjs/common';
 
-const allowlist = ['http://localhost:3000'];
+const whitelist = ['http://localhost:3000'];
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet());
-  app.enableCors(function (req, callback) {
-    let corsOptions;
-    if (allowlist.indexOf(req.header('Origin')) !== -1) {
-      corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-    } else {
-      corsOptions = { origin: false }; // disable CORS for this request
-    }
-    callback(null, corsOptions); // callback expects two parameters: error and options
+  app.useGlobalPipes(new ValidationPipe());
+
+  app.enableCors({
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        console.log('allowed cors for:', origin);
+        callback(null, true);
+      } else {
+        console.log('blocked cors for:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    allowedHeaders:
+      'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe',
+    methods: 'GET,PUT,POST,DELETE,UPDATE,OPTIONS',
+    credentials: true,
   });
 
   await app.listen(3200);

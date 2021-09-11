@@ -14,8 +14,20 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
+  create(user: User): User {
+    return this.usersRepository.create(user);
+  }
+
+  save(user: User): Promise<User> {
+    return this.usersRepository.save(user);
+  }
+
   findOne(id: string): Promise<User> {
     return this.usersRepository.findOne(id);
+  }
+
+  findByEmail(email: string): Promise<User> {
+    return this.usersRepository.findOne({ where: { email } });
   }
 
   async remove(id: string): Promise<void> {
