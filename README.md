@@ -1,3 +1,4 @@
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
@@ -28,13 +29,16 @@
 
 ## Installation
 
-```bash
+---
+```plaintext
 $ npm install
 ```
+---
 
 ## Running the app
 
-```bash
+---
+```plaintext
 # development
 $ npm run start
 
@@ -44,10 +48,12 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+---
 
 ## Test
 
-```bash
+---
+```plaintext
 # unit tests
 $ npm run test
 
@@ -57,16 +63,10 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+---
 
-## Support
+`docker run --name some-postgres -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgres -e POSTGRES_DB=onboard -p 5432:5432 -d postgres`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
