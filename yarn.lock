@@ -1807,6 +1807,13 @@
     "readable-stream" "^2.2.2"
     "typedarray" "^0.0.6"
 
+"config@^3.3.6":
+  "integrity" "sha512-Hj5916C5HFawjYJat1epbyY2PlAgLpBtDUlr0MxGLgo3p5+7kylyvnRY18PqJHgnNWXcdd0eWDemT7eYWuFgwg=="
+  "resolved" "https://registry.npmjs.org/config/-/config-3.3.6.tgz"
+  "version" "3.3.6"
+  dependencies:
+    "json5" "^2.1.1"
+
 "consola@^2.15.0":
   "integrity" "sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw=="
   "resolved" "https://registry.npmjs.org/consola/-/consola-2.15.3.tgz"
@@ -3475,7 +3482,7 @@
   dependencies:
     "minimist" "^1.2.0"
 
-"json5@^2.1.2", "json5@^2.2.0", "json5@2.x":
+"json5@^2.1.1", "json5@^2.1.2", "json5@^2.2.0", "json5@2.x":
   "integrity" "sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA=="
   "resolved" "https://registry.npmjs.org/json5/-/json5-2.2.0.tgz"
   "version" "2.2.0"
