@@ -21,7 +21,7 @@ export class User {
   role: string;
 
   @Column()
-  project_id: string;
+  org_id: string;
 
   @Column({ default: true })
   isActive: boolean;

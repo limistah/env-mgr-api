@@ -27,7 +27,7 @@ export class UsersController {
     user.last_name = createUserDto.lastName;
     user.email = createUserDto.email;
     user.role = 'admin';
-    user.project_id = uuid();
+    user.org_id = uuid();
     user.password = hashedPassword;
     return this.userService.save(user);
   }

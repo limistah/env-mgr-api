@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { UsedEmailsMiddleware } from './common/middleware/used-emails.middleware';
 import { UsersController } from './users/users.controller';
+import { ProjectsModule } from './projects/projects.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UsersController } from './users/users.controller';
     }),
     AuthModule,
     UsersModule,
+    ProjectsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
