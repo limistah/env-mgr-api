@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { getConnectionOptions } from 'typeorm';
 import { UsedEmailsMiddleware } from './common/middleware/used-emails.middleware';
 import { UsersController } from './users/users.controller';
 import { ProjectsModule } from './projects/projects.module';
@@ -12,11 +11,16 @@ import { KeysModule } from './keys/keys.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      useFactory: async () =>
-        Object.assign(await getConnectionOptions(), {
-          autoLoadEntities: true,
-        }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DATABASE,
+      synchronize: true,
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      autoLoadEntities: true,
     }),
     AuthModule,
     UsersModule,
