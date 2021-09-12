@@ -9,6 +9,8 @@ import { UsersController } from './users/users.controller';
 import { ProjectsModule } from './projects/projects.module';
 import { KeysModule } from './keys/keys.module';
 
+console.log(process.env);
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
