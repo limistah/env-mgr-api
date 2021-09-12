@@ -14,7 +14,7 @@ import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { query, Response } from 'express';
+import { Response } from 'express';
 
 @Controller('projects')
 export class ProjectsController {
@@ -32,7 +32,8 @@ export class ProjectsController {
         message: 'Name already exists',
       });
     }
-    return this.projectsService.create(createProjectDto);
+    const project = await this.projectsService.create(createProjectDto);
+    return res.status(201).json(project);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -59,8 +60,6 @@ export class ProjectsController {
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    const project = this.projectsService.find(+id);
-    await this.projectsService.remove(+id);
-    return project;
+    return this.projectsService.remove(+id);
   }
 }

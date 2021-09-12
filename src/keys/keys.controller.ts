@@ -29,7 +29,8 @@ export class KeysController {
         message: 'Key already exists',
       });
     }
-    return this.keysService.create(createKeyDto);
+    const key = await this.keysService.create(createKeyDto);
+    return res.status(201).json(key);
   }
 
   @UseGuards(JwtAuthGuard)

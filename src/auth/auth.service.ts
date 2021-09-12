@@ -29,4 +29,13 @@ export class AuthService {
       user,
     };
   }
+
+  async longLiveLogin(user: any) {
+    user = await this.usersService.findOne(user.id);
+    const payload = { email: user.email, id: user.id };
+    return {
+      access_token: this.jwtService.sign(payload, { expiresIn: '4d' }),
+      user,
+    };
+  }
 }
