@@ -8,6 +8,7 @@ import { getConnectionOptions } from 'typeorm';
 import { UsedEmailsMiddleware } from './common/middleware/used-emails.middleware';
 import { UsersController } from './users/users.controller';
 import { ProjectsModule } from './projects/projects.module';
+import { KeysModule } from './keys/keys.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ProjectsModule } from './projects/projects.module';
     AuthModule,
     UsersModule,
     ProjectsModule,
+    KeysModule,
   ],
   controllers: [AppController],
   providers: [AppService],
